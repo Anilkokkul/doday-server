@@ -17,6 +17,13 @@ app.get("/health", (req, res) => {
   res.json({ status: "ok", timestamp: new Date().toISOString() });
 });
 
+// Unauthenticated routes
+
+app.get("/",(req,res)=>{
+  res.json({ status: "ok", timestamp: new Date().toISOString(),message:"Server is running successfully "});
+})
+
+
 // Authenticated API routes
 app.use("/api", authMiddleware);
 app.use("/api/tasks", tasksRouter);
